@@ -39,9 +39,9 @@ const createEmployee = async (body) => {
             try{
                 employeeCollection.insertOne(newEmployee).then((res) => {
                     if(res.acknowledged){
-                        resolve("Created Employee Successfully");
+                        resolve("Created Employee Successfully in Corporate Database.");
                     }else{
-                        reject("Cannot create Employee");
+                        reject("Cannot create Employee in Corporate Database.");
                     }
                 });
             }catch{
@@ -67,10 +67,10 @@ const deleteEmployee = async (body) => {
                         try{
                             resolve("Employee Deleted Successfully from Corporate Database.")
                         }catch{
-                            reject("Cannot delete Employee");
+                            reject("Cannot delete Employee from Corporate Database.");
                         }
                     }else{
-                        reject("Cannot delete Employee");
+                        reject("Cannot delete Employee from Corporate Database.");
                     }
                 });
             }catch{

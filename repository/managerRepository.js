@@ -65,7 +65,7 @@ const deleteEmployee = async (body) => {
                     if(res.acknowledged){
                         console.log(res, "first");
                         try{
-                            resolve("Employee Deleted Successfully.")
+                            resolve("Employee Deleted Successfully from Corporate Database.")
                         }catch{
                             reject("Cannot delete Employee");
                         }

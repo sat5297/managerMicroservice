@@ -56,11 +56,13 @@ const deleteEmployee = async (body) => {
     if(body.empID != null && body.empID !== ""){
         searchOptions.empID = body.empID;
     }
-    console.log(body, searchOptions,"delete");
+    const emp = new EmployeeModel(body);
+    console.log(body, searchOptions, emp, "delete");
     return new Promise((resolve,reject) => {
         client.connect(async err => {
             const employeeCollection = client.db("corpinfoemp").collection("corpinfoemp");
             try{
+                await updateManager(emp);
                 await employeeCollection.deleteOne(searchOptions).then((res) => {
                     if(res.acknowledged){
                         console.log(res, "first");
@@ -75,6 +77,28 @@ const deleteEmployee = async (body) => {
                 });
             }catch{
                 reject("Error in promise")
+            }
+        });
+    });
+};
+
+const updateManager = async (payroll) => {
+    let searchOptions = {};
+    if(payroll.empID != null && payroll.empID !== ""){
+        searchOptions.empManagerID = payroll.empID;
+    }
+    return new Promise((resolve,reject) => {
+        client.connect(async err => {
+            const payrollCollection = client.db("corpinfoemp").collection("corpinfoemp");
+            try{
+                await payrollCollection.updateMany(searchOptions, 
+                    {$set : {empManagerID : payroll.empManagerID, empManager : payroll.empManager }}).then((res) => {
+                        console.log(res);
+                        resolve("Updated the Manager in Corporate Database");
+                })
+            }
+            catch{
+                reject("Error in Promise");
             }
         });
     });

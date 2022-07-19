@@ -3,6 +3,7 @@ const router = express.Router();
 const managerController = require('../controllers/managerController');
 
 router.route('/viewEmployee')
+        .get(managerController.getEmployeeInfo)
         .post(managerController.getEmployeeInfo)
         
 router.route('/addEmployee')
@@ -10,5 +11,6 @@ router.route('/addEmployee')
 
 router.route('/delete')
         .post(managerController.deleteEmployee)
+        .delete(managerController.deleteEmployee)
         
 module.exports = router;

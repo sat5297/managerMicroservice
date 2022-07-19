@@ -12,8 +12,8 @@ const client = new MongoClient(process.env.DATABASE_URL, {
 const getEmployeeInfo = async (body) => {
     console.log(body);
     let searchOptions = {};
-    if(body.empmanagerid != null && body.empmanagerid !== ''){
-        searchOptions.empManagerID = body.empmanagerid;
+    if(body.empManagerID != null && body.empManagerID !== ''){
+        searchOptions.empManagerID = body.empManagerID;
     }
     console.log(body, searchOptions)
     return new Promise((resolve,reject) => {

@@ -9,7 +9,7 @@ It includes the following functionalities:
   </ul>
   
   
- <a href="https://documenter.getpostman.com/view/10075006/UzQyq3kF" > <h2> API Documentation </h2> </a>
+  <h2> <a href="https://documenter.getpostman.com/view/10075006/UzQyq3kF"> API Documentation </a> </h2>
   
   # Create Employee
   <img src="https://github.com/sat5297/managerMicroservice/blob/master/createEmployeeActivity.jpeg" alt="Create Employee"/>
